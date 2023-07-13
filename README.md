@@ -1,4 +1,57 @@
-# dail-in
+# DOCUMENTATION
+
+## SETUP
+### Download and setup
+
+- Download and install prometheus : https://prometheus.io/download/
+
+- Download and install Grafana : https://grafana.com/grafana/download
+
+- Download and install Loki : https://github.com/grafana/loki/releases/tag/v2.8.1
+
+- Download the loki YAML file : https://raw.githubusercontent.com/grafana/loki/main/cmd/loki/loki-local-config.yaml
+
+### configure prometheus
+- Open the terminal or command prompt.
+- Navigate to the directory where Prometheus is installed. This is typically the directory where the prometheus.exe file is located.
+- Locate the `prometheus.yml` file. It is the main configuration file for Prometheus.
+- append the following to the yml file
+	```- job_name: "telemetry"
+	  # metrics_path defaults to '/metrics'
+	  # scheme defaults to 'http'.
+	  static_configs:
+	    - targets: ["localhost:9092"]```
+
+### running the code
+- Run the Telemetry code in the system
+	- If it gives error it will be due to the reason that TLS will not be enabled in the gRPC port of the router. Kindly make sure that TLS in enabled in the router.
+	
+
+### check if prometheus is set up correctly
+
+	- go to localhost:9090 and check if prometheus is runnning
+	- go to localhost:9090/targets and check if our telemetry metrics on port 9092 is up
+	
+	
+### Grafana setup
+	- Open localhost:3000 and go to datasources
+	- Click prometheus and set the URL as http://localhost:9090
+	- Create a Dashboard for the required visualisation
+
+### Loki Setup
+	- run the following command to start loki `.\loki-windows-amd64.exe --config.file=loki-local-config.yaml`
+	- check in localhost:3100 if the loki server is running properly
+	
+## Visualise logs in loki
+	- Open localhost:3000 and go to datasources
+	- Click loki and set the URL as http://localhost:3100
+	- go to explore section in grafana
+	- configure the datasource as loki and start querying the logs.
+
+
+
+
+
 
 ## Telemetry Client for Cisco Device Metrics Collection
 
