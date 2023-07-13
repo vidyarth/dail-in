@@ -36,7 +36,7 @@ This class represents the telemetry client for connecting to the Cisco device an
 - `add_subscription_periodic(self, metric)`: Adds a periodic subscription for the given metric. It sets up the gNMI subscription and listens for updates periodically. The collected metric values are stored in the associated Prometheus metric object. It takes the following parameter:
   - `metric`: The `Metric` object to be subscribed and collected.
 
-- `add_subscription_onchange(self, metric)`: [Not used in the provided code]
+- `add_subscription_onchange(self, metric)`: Does the same thing as `add_subscription_periodic(self, metric)` but adds a onchange subscription.
 
 - `collect_metrics(self)`: [Not used in the provided code]
 
