@@ -16,11 +16,11 @@
 - Navigate to the directory where Prometheus is installed. This is typically the directory where the prometheus.exe file is located.
 - Locate the `prometheus.yml` file. It is the main configuration file for Prometheus.
 - append the following to the yml file
-	```- job_name: "telemetry"
-	  # metrics_path defaults to '/metrics'
-	  # scheme defaults to 'http'.
+	```
+ 	- job_name: "telemetry"
 	  static_configs:
-	    - targets: ["localhost:9092"]```
+	    - targets: ["localhost:9092"]
+ 	```
 
 ### running the code
 - Run the Telemetry code in the system
